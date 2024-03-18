@@ -1,0 +1,36 @@
+body {
+    background-color: rgba(140, 195, 234, 1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+    
+   
+   
+   .hero {
+     height: 30vh;
+     background: url('https://ideaexchange.org/sites/default/files/styles/original/public/iStock-483883392_0517_ADULTsimpsons.jpg?itok=CqcjLnqI');
+   }
+   
+   div {
+     
+     font-family: Rock Salt;
+     font-size: 120%;
+     color: rgba(255, 217, 15, 1);
+   }
+   
+   
+   .columns {
+     height: 90vh;
+   }
+   
+   .column {
+     background-color: rgba(140, 195, 234, 1);
+   }
+   
+   .button {
+     font-family: Rock Salt;
+     background-color:  rgba(255, 217, 15, 1);
+     color:black ;
+     margin: 50px, 0;
+   }
