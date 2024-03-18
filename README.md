@@ -25,3 +25,4 @@
 | Calidad del código     | 1.5     |
 | Funcionalidad      | 1.5      |
 
+link: https://dsaw-2024-1.github.io/intro-to-asyncronism-san1tago/ Santiago Soler Prado
