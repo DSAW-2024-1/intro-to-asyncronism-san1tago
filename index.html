@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+  <title>The Simpsons Random Quote Generator</title>
+</head>
+<body>
+
+  <section class="hero">
+    <div class="hero-body">
+      <h1 class="title has-text-centered">
+        The Simpsons <br /> Random Quote Generator
+      </h1>
+    </div>
+  </section>
+
+  <section id="quoteSection" class="columns">
+    <div class="column">
+      <p id="loadingMessage">Hold yer horses! The quotes are loading!</p>
+    </div>
+    <div class="column">
+      <p>Seriously! give them a wee moment!</p>
+    </div>
+  </section>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      function fetchData() {
+        fetch('https://thesimpsonsquoteapi.glitch.me/quotes')
+          .then(response => response.json())
+          .then(data => displayQuotes(data))
+          .catch(error => console.error('Error fetching quotes:', error));
+      }
+
+      function displayQuotes(quotesList) {
+        const quoteSection = document.getElementById('quoteSection');
+        const loadingMessage = document.getElementById('loadingMessage');
+
+        loadingMessage.style.display = 'none';
+
+        const quoteColumn = document.createElement('div');
+        quoteColumn.className = 'column';
+        quoteSection.appendChild(quoteColumn);
+
+        const imageContainer = document.createElement('figure');
+        imageContainer.className = 'image is-square';
+        quoteColumn.appendChild(imageContainer);
+
+        quotesList.forEach((quote, i) => {
+          const image = document.createElement('img');
+          image.src = quote.image;
+          imageContainer.appendChild(image);
+
+          const quoteText = document.createElement('div');
+          quoteText.className = 'has-text-left';
+          quoteText.innerHTML = `"${quote.quote}"<br /><br />-${quote.character}`;
+          quoteColumn.appendChild(quoteText);
+        });
+
+        const button = document.createElement('button');
+        button.className = 'button is-large is-rounded';
+        button.innerHTML = 'New Quote!';
+        button.addEventListener('click', fetchData);
+        quoteSection.appendChild(button);
+      }
+      
+
+      fetchData(); // Fetch quotes on page load
+    });
+  </script>
+
+</body>
+</html>
